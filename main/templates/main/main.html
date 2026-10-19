@@ -9,8 +9,42 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
-<body>
-
-
+<body class="main-container" style="background-image: url('{% static 'main/img/18.jpg' %}'); background-repeat: no-repeat; background-size: cover; background-position: center center; background-attachment: fixed;">
+    <div class="items">
+        <span class="contacts">
+            tel: &nbsp&nbsp  +256778578479<br>
+            Wap:  +256778578479<br>
+        </span>
+    </div>
+    <div class="items">
+        {% block page %}{% endblock %}
+    </div>
+    <div class="items item3">
+        3 - Enter
+    </div>
+<!--    <hr>-->
+    <div class="items item-4">
+        <span class="list-menu">
+            <a class="a-menu" href="{% url 'home' %}">Home</a>
+        </span>
+        <span class="list-menu">
+            <a  class="a-menu" href="{% url 'about' %}">About us</a>
+        </span>
+        <span class="list-menu">
+            <a class="a-menu"  href="">Add prod</a>
+        </span>
+        <span class="list-menu">
+            <a class="a-menu"  href="">Admin</a>
+        </span>
+        <span class="list-menu">
+            <a class="a-menu"  href="">Orders</a>
+        </span>
+    </div>
+    <div class="items item-5">
+        5 - main
+    </div>
+    <div class="items item-6 ">
+        6 - under
+    </div>
 </body>
 </html>
