@@ -8,24 +8,19 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /*justify-content: space-between;*/
     align-items: center;
     width: 100%;
     height: 100vh;
     text-align: center;
-    /*background-color: rgba(0,0,0,0.3);*/
 }
 .items{
     display: grid;
     justify-content: center;
-    /*border: 1px solid green;*/
-    border-radius: 10px;
     width: 30%;
     height: clamp(50px, 6vw, 100px);
     background-color: rgba(0,0,0,0.3);
 
 
-    /*height: clamp(40px, 10%, 80px);*/
     align-items: center;
 }
 .item-4{
@@ -39,8 +34,6 @@ body{
     font-weight: bold;
     font-size: clamp(15px, 1.5vw, 30px);
     width: 20%;
-    border: 1px solid red;
-    border-radius: 6px;
     background-color: rgba(0,0,0,0.3);
 }
 .a-menu{
@@ -52,12 +45,7 @@ body{
 }
 .item-5{
     width: 100%;
-    /*height: 81%;*/
-    height: clamp(715px, 38vw, 1000px);
-}
-.item-6{
-    width: 100%;
-    height: 3%;
+    height: clamp(750px, 39.5vw, 1000px);
 }
 .name-page{
     font-weight: bold;
