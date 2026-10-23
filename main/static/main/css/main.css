@@ -3,6 +3,8 @@ body{
     padding: 0;
     width: 100%;
     height: 100vh;
+    overflow-y: hidden;
+    min-width: 390px;
 }
 .main-container{
     display: flex;
@@ -45,16 +47,46 @@ body{
 }
 .item-5{
     width: 100%;
-    height: clamp(750px, 39.5vw, 1000px);
+    /*height: clamp(750px, 39.5vw, 1100px);*/
+    height: 90vh;
+    box-sizing: border-box;
+    /*border: 1px solid red;*/
+    padding-top: 15px;
+    padding-bottom: 40px;
+    overflow-y: auto;
 }
 .name-page{
     font-weight: bold;
-    font-size: clamp(25px, 2vw, 80px);
+    font-size: clamp(20px, 2vw, 80px);
 }
 .contacts{
     color: white;
     font-weight: bold;
     font-size: clamp(10px, 1.5vw, 40px);
     text-shadow: 3px 3px 3px black;
-
+}
+.input-reg{
+    font-size: clamp(10px, 1vw, 40px);
+    width: clamp(45px, 10vw, 10vw);
+    height: clamp(10px, 1vw, 1vw);
+}
+.form-main-container{
+    display: flex;
+    flex-direction: column;
+}
+.form-item{
+    border-radius: 10px;
+}
+textarea{
+    height: clamp(200px, 5vw, 300px);
+    width: clamp(350px, 40vw, 600px);
+    font-size: 20px;
+}
+form input{
+    font-size: 30px;
+    width: clamp(350px, 40vw, 600px);
+    border-radius: 10px;
+}
+.cr-button{
+    font-size:clamp(20px, 2vw, 80px) ;
 }

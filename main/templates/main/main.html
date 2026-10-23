@@ -20,7 +20,22 @@
         {% block page %}{% endblock %}
     </div>
     <div class="items item3">
-        3 - Enter
+<!--        LOGIN-->
+        {% if user.is_authentieated or user.is_superuser %}
+        <span class="contacts">hello&nbsp;{{ user.username }}</span>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">logout</button>
+        </form>
+        {% else %}
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input class="input-reg" type="text" name="username" placeholder="username" >
+            <input class="input-reg" type="password" name="password" placeholder="password">
+            <button type="submit">login</button>
+        </form>
+        {% endif %}
+<!--        3 - Enter-->
     </div>
 <!--    <hr>-->
     <div class="items item-4">
@@ -30,18 +45,21 @@
         <span class="list-menu">
             <a  class="a-menu" href="{% url 'about' %}">About us</a>
         </span>
-        <span class="list-menu">
-            <a class="a-menu"  href="">Add prod</a>
-        </span>
-        <span class="list-menu">
-            <a class="a-menu"  href="">Admin</a>
-        </span>
-        <span class="list-menu">
-            <a class="a-menu"  href="">Orders</a>
-        </span>
+        {% if user.is_authentieated or user.is_superuser %}
+            <span class="list-menu">
+                <a class="a-menu"  href="{% url 'create' %}">Add prod</a>
+            </span>
+            <span class="list-menu">
+                <a class="a-menu"  href="http://127.0.0.1:8000/admin/">Admin</a>
+            </span>
+            <span class="list-menu">
+                <a class="a-menu"  href="">Orders</a>
+            </span>
+        {% endif %}
     </div>
     <div class="items item-5">
-        5 - main
+        {% block main %}
+        {% endblock %}
     </div>
 </body>
 </html>

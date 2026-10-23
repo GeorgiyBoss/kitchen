@@ -1,0 +1,27 @@
+{% extends 'main/main.html' %}
+
+{% block title %}
+Create Products
+{% endblock %}
+
+{% block page %}
+    <span class="name-page"> Add a new product </span>
+{% endblock %}
+
+{% block main%}
+    <div>
+        <form method="POST" enctype="multipart/form-data" class="form-main-container">
+<!--            <span>-->
+<!--                {{error}}-->
+<!--            </span>-->
+            {% csrf_token %}
+            <span class="form-item">{{ form.name}}</span>
+            <span class="form-item">{{ form.price}}</span>
+            <span class="form-item">{{ form.min_desc}}</span>
+            <span class="form-item">{{ form.desc}}</span>
+            <span class="form-item">{{ form.image}}</span>
+            <button class="form-item cr-button" type="submit">Add product</button>
+            </form>
+    </div>
+{% endblock %}
+
