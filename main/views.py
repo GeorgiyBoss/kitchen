@@ -4,8 +4,10 @@ from  . models import Product
 from . forms import ProductForm
 
 def home(request):
-    return render(request, 'main/home.html')
-
+    data = {
+        'products': Product.objects.all()
+    }
+    return render(request, 'main/home.html', data)
 def about(request):
     return render(request, 'main/about.html')
 def login_view(request):
@@ -18,7 +20,6 @@ def login_view(request):
             return redirect('/')
         else:
             return redirect('/')
-        return redirect(request.META['HTTP_REFERER'])
 def logout_view(request):
     logout(request)
     return redirect('/')

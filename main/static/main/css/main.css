@@ -47,12 +47,12 @@ body{
 }
 .item-5{
     width: 100%;
-    /*height: clamp(750px, 39.5vw, 1100px);*/
+    display: grid;
+    place-items: center;
     height: 90vh;
     box-sizing: border-box;
-    /*border: 1px solid red;*/
     padding-top: 15px;
-    padding-bottom: 40px;
+    padding-bottom: 110px;
     overflow-y: auto;
 }
 .name-page{
@@ -89,4 +89,59 @@ form input{
 }
 .cr-button{
     font-size:clamp(20px, 2vw, 80px) ;
+}
+.main-product{
+    display: flex;
+    border: 2px solid wheat;
+    border-radius: 15px;
+    width: clamp(310px, 50%, 55%);
+    height: clamp(100px, 10vw, 300px);
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.2);
+}
+.main-product:hover{
+    background-color: rgba(0,0,0,0.4);
+}
+
+.read-img{
+    width: clamp(100px, 25%, 200px);
+    border-radius: 15px;
+    height: 100%;
+}
+.read-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 100%;
+    overflow: hidden;
+
+}
+.read-name{
+    color: orangered;
+    text-shadow: 1px 1px 3px black;
+    font-size: clamp(15px, 2.5vw, 35px);
+    font-weight: bold;
+    height: 25%;
+}
+.read-price{
+    color: navajowhite;
+    text-shadow: 1px 1px 5px black;
+    font-size: clamp(15px, 2vw, 35px);
+    font-weight: bold;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 25%;
+}
+.read-min_desc{
+    color: black;
+    text-shadow: 1px 1px 1px white;
+    font-size: clamp(13px, 1.5vw, 35px);
+    width: 85%;
+    font-weight: bold;
+    height: 60%;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    overflow-y: auto;
 }
