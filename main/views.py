@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from  . models import Product
 from . forms import ProductForm
+from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 
 def home(request):
     data = {
@@ -39,7 +40,10 @@ def create(request):
             'form': form,
             'error': error
             }
-        # return render(request, 'main/create.html', data)
     return render(request, 'main/create.html', data)
 
+class ProductDetail(DetailView):
+    model = Product
+    template_name = 'main/detail.html'
+    context_object_name = 'pr'
 # Create your views here.

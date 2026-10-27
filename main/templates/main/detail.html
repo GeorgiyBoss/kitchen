@@ -1,0 +1,37 @@
+{% extends 'main/main.html' %}
+
+{% block title %}
+    Product
+{% endblock %}
+
+{% block page %}
+    <span class="name-page"> Product </span>
+{% endblock %}
+
+{% block main %}
+    <div class="detail-main-container">
+        <img class="detail-image" src="{{pr.image.url}}">
+        <div class="detail-name">{{pr.name}}</div>
+        <div class="detail-price">
+            {{pr.price}}
+            <span style="font-size: clamp(8px, 1vw, 35px); color: burlywood">
+                Sh
+            </span>
+        </div>
+        <div class="detail-desc">{{pr.desc}}</div>
+        <span>&nbsp;</span>
+        <div class="detail-button-container">
+            <div class="detail-buy">
+                <a class="detail-a" href=""> To buy </a>
+            </div>
+            {% if user.is_superuser %}
+                <div class="detail-edit">
+                    <a class="detail-a" href=""> Edit </a>
+                </div>
+                <div class="detail-delete">
+                    <a class="detail-a" href=""> Delete </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

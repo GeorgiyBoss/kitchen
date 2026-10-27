@@ -10,12 +10,12 @@
 
 {% block main %}
     {% for product in products %}
-        <a href="" class="main-product">
+        <a href="{% url 'detail' product.pk %}" class="main-product">
             <img class="read-img" src="{{product.image.url}}" >
             <div class="read-container">
                 <div class="read-name">{{product.name}}</div>
                 <div class="read-price">
-                    {{product.price}}&nbsp;
+                    {{product.price}}
                     <span style="font-size: clamp(8px, 1vw, 35px); color: burlywood">
                         Sh
                     </span>
