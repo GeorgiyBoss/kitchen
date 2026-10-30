@@ -59,7 +59,7 @@ class ProductEdit(UpdateView):
 def add_to_cart(request, pk):
     product = get_object_or_404(Product, pk=pk)
     cart = request.session.get('cart',{})
-    print("add befor",cart)
+    # print("add befor",cart)
     product_id = str(pk)
     if product_id in cart:
         cart[product_id] += 1
@@ -67,9 +67,8 @@ def add_to_cart(request, pk):
         cart[product_id] = 1
     request.session['cart'] = cart
     request.session.save()
-    print("add after",request.session['cart'])
+    # print("add after",request.session['cart'])
     return redirect(request.META.get('HTTP_REFERER','home'))
-
 def cart_view(request):
     cart = request.session.get('cart',{})
     products = []
@@ -80,5 +79,5 @@ def cart_view(request):
             'quantity': quantity,
             'total': product.price * quantity,
         })
-    print('Products',products)
+    # print('Products',products)
     return render(request, 'main/cart.html', {'products': products})
