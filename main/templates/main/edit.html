@@ -1,0 +1,24 @@
+{% extends 'main/main.html' %}
+
+{% block title %}
+    EDIT
+{% endblock %}
+
+{% block page %}
+    EDIT PRODUCT
+{% endblock %}
+
+{% block main %}
+    <div>
+        <form method="POST" enctype="multipart/form-data" class="form-main-container">
+            {% csrf_token %}
+            <span class="form-item">{{ form.name}}</span>
+            <span class="form-item">{{ form.price}}</span>
+            <span class="form-item">{{ form.min_desc}}</span>
+            <span class="form-item">{{ form.desc}}</span>
+            <span class="form-item">{{ form.image}}</span>
+            <button class="form-item cr-button" type="submit">Edit product</button>
+            </form>
+    </div>
+
+{% endblock %}

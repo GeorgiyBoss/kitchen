@@ -12,3 +12,5 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
+    def get_absolute_url(self):
+        return f'/products/{self.pk}/'

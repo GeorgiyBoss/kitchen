@@ -1,5 +1,8 @@
+from multiprocessing import context
+
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from  . models import Product
 from . forms import ProductForm
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
@@ -24,8 +27,6 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
-
-
 def create(request):
     error = 'error'
     if request.method == 'POST':
@@ -41,9 +42,43 @@ def create(request):
             'error': error
             }
     return render(request, 'main/create.html', data)
-
 class ProductDetail(DetailView):
     model = Product
     template_name = 'main/detail.html'
     context_object_name = 'pr'
-# Create your views here.
+class ProductDelete(DeleteView):
+    model = Product
+    template_name = 'main/delete.html'
+    success_url = reverse_lazy('home')
+class ProductEdit(UpdateView):
+    model = Product
+    template_name = 'main/edit.html'
+    fields = '__all__'
+    success_url = reverse_lazy('home')
+
+def add_to_cart(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    cart = request.session.get('cart',{})
+    print("add befor",cart)
+    product_id = str(pk)
+    if product_id in cart:
+        cart[product_id] += 1
+    else:
+        cart[product_id] = 1
+    request.session['cart'] = cart
+    request.session.save()
+    print("add after",request.session['cart'])
+    return redirect(request.META.get('HTTP_REFERER','home'))
+
+def cart_view(request):
+    cart = request.session.get('cart',{})
+    products = []
+    for product_id, quantity in cart.items():
+        product = Product.objects.get(id=product_id)
+        products.append({
+            'product': product,
+            'quantity': quantity,
+            'total': product.price * quantity,
+        })
+    print('Products',products)
+    return render(request, 'main/cart.html', {'products': products})

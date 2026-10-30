@@ -21,15 +21,22 @@
         <div class="detail-desc">{{pr.desc}}</div>
         <span>&nbsp;</span>
         <div class="detail-button-container">
-            <div class="detail-buy">
-                <a class="detail-a" href=""> To buy </a>
-            </div>
+
+            <form action="{% url 'add_to_cart' pr.pk %}" method="POST" class="detail-buy" style="display:inline">
+<!--            <div class="detail-buy">-->
+                {% csrf_token %}
+                <button type="submit" class="detail-a"> To buy </button>
+            </form>
+<!--                <a class="detail-a" href=""> To buy </a>-->
+<!--            </div>-->
+
+
             {% if user.is_superuser %}
                 <div class="detail-edit">
-                    <a class="detail-a" href=""> Edit </a>
+                    <a class="detail-a" href="{% url 'edit' pr.pk %}"> Edit </a>
                 </div>
                 <div class="detail-delete">
-                    <a class="detail-a" href=""> Delete </a>
+                    <a class="detail-a" href="{% url 'delete' pr.pk %}"> Delete </a>
                 </div>
             {% endif %}
         </div>

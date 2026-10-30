@@ -153,7 +153,7 @@ form input{
 /*}*/
 .detail-main-container{
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -161,7 +161,7 @@ form input{
     border-radius: 15px;
     background-color: rgba(0,0,0,0.3);
     width: 60%;
-    height: 70vh;
+    height: 77vh;
 }
 .detail-image{
     border-radius: 15px;
@@ -180,7 +180,9 @@ form input{
     text-shadow: 1px 1px 3px gray;
 }
 .detail-desc{
-    width: 70%;
+    width: clamp(200px, 70%, 600px);
+    word-wrap: break-word;
+    overflow-y: auto;
     font-size: clamp(15px, 1.5vw, 30px);
     color: yellow;
     text-shadow: 1px 1px 1px black;
