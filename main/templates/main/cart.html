@@ -15,13 +15,23 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
+            <th>Action</th>
         </tr>
         {% for item in products %}
         <tr>
             <td>{{ item.product.name }}</td>
             <td>{{ item.product.price }}</td>
-            <td>{{ item.quantity }}</td>
+            <td>
+                <a href="{% url 'plus_cart' product_id=item.product.id %}"> + </a>
+                {{ item.quantity }}
+                <a href="{% url 'decrease_cart' product_id=item.product.id %}"> - </a>
+            </td>
             <td>{{ item.total }}</td>
+            <td>
+                <a href="{% url 'remove_from_cart' product_id=item.product.id %}">
+                    del
+                </a>
+            </td>
         </tr>
         {% endfor %}
     </table>

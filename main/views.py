@@ -1,6 +1,7 @@
 from multiprocessing import context
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.messages.storage import session
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from  . models import Product
@@ -81,3 +82,35 @@ def cart_view(request):
         })
     # print('Products',products)
     return render(request, 'main/cart.html', {'products': products})
+
+
+
+def decrease_cart(request, product_id):
+    cart = request.session.get('cart', {})
+    product = str(product_id)
+    if product in cart:
+        if cart[product] > 1:
+            cart[product] -= 1
+        else:
+            del cart[product]
+    request.session['cart'] = cart
+    return redirect(request.META.get('HTTP_REFERER', 'cart'))
+
+def plus_cart(request, product_id):
+    cart = request.session.get('cart', {})
+    product = str(product_id)
+    if product in cart:
+        if product in cart:
+            cart[product] += 1
+        else:
+             cart[product] = 1
+    request.session['cart'] = cart
+    return redirect(request.META.get('HTTP_REFERER', 'cart'))
+
+def remove_from_cart(request,product_id):
+    cart = request.session.get('cart', {})
+    product = str(product_id)
+    if product in cart:
+        del cart[product]
+        request.session['cart'] = cart
+    return redirect(request.META.get('HTTP_REFERER', 'cart'))
